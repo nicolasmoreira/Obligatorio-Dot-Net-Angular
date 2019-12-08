@@ -8,15 +8,11 @@ import { LoginService } from '../login/login.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public loginService: LoginService = null;
-
-  construct(loginService: LoginService) {
-    this.loginService = loginService;
-    this.loginService.checkAuthenticated();
-
+  constructor(private loginService: LoginService) {
   }
 
   ngOnInit() {
+    this.loginService.checkAuthenticated();
   }
 
 }

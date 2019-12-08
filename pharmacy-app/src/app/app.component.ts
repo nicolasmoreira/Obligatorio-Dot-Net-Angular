@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LoginService } from './login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +7,5 @@ import { LoginService } from './login/login.service';
 })
 export class AppComponent {
   title = 'pharmacy-app';
-
 }
 
