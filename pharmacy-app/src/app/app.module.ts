@@ -8,6 +8,10 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { HelpComponent } from './help/help.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductSliderComponent } from './product-slider/product-slider.component';
+import { HttpClientModule } from "@angular/common/http";
+import { InMemoryWebApiModule } from "angular-in-memory-web-api";  
+import { DataService } from "./data.service";
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -16,10 +20,13 @@ import { ProductSliderComponent } from './product-slider/product-slider.componen
     ProductListComponent,
     HelpComponent,
     FooterComponent,
-    ProductSliderComponent
+    ProductSliderComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    InMemoryWebApiModule.forRoot(DataService),
     AppRoutingModule
   ],
   providers: [],

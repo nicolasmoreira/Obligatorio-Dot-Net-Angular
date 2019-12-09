@@ -8,7 +8,7 @@
 
       <div class="row">
         <div class="col-sm-6 col-lg-4 text-center item mb-4"  *ngFor="let product of products;">
-          <a href="shop-single.html"> <img src={{product.image}} alt="Image"></a>
+          <a routerLink= "/product/{{product.id}}"> <img src={{product.image}} alt="Image"></a>
           <h3 class="text-dark"><a href="shop-single.html">{{product.name}}</a></h3>
           <p class="price">${{product.price}}</p>
         </div>

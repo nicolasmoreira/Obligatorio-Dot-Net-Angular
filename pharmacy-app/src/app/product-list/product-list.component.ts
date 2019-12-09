@@ -1,26 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from "../product/prodcut.service";
+import { Product } from "../product/product";
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
+  products: Product[] = [];
 
-    products: Product[] =[  
-        {image:'assets/images/product_01.png',name:'Bioderma',price:'95'},  
-        {image:'assets/images/product_02.png',name:'Chanca Piedra',price:'70'},  
-        {image:'assets/images/product_03.png',name:'Umcka Cold Care',price:'120'},  
-        {image:'assets/images/product_04.png',name:'Cetyl Pure',price:'45'},  
-        {image:'assets/images/product_05.png',name:'CLA Core',price:'38'},  
-        {image:'assets/images/product_06.png',name:'Poo Pourri',price:'89'},  
-    ]  
-
-
-}
-
-class Product {  
-  image : string;  
-  name : string;  
-  price : string;    
+  constructor(private productService: ProductService) { }
+  ngOnInit() {
+    this.productService.getProducts().subscribe((products: Product[])=>{
+      this.products = products;
+      console.log(products);
+    })
+  }
 }
