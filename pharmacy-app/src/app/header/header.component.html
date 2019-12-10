@@ -24,7 +24,7 @@
                             <a href="#">ARTÍCULOS</a>
                             <ul class="dropdown">
                                 <li *ngFor="let c of categorias">
-                                    <a href="#">{{ c.Nombre }}</a>
+                                    <a [routerLink]="['/list', c.Id]">{{ c.Nombre }}</a>
                                 </li>
                             </ul>
                         </li>

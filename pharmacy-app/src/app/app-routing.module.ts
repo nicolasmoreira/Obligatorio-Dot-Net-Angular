@@ -5,12 +5,14 @@ import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { HelpComponent } from './help/help.component';
+import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'cart', component: CartComponent },
   { path: 'help', component: HelpComponent },
+  { path: 'list/:idCategoria', component: ListComponent },
   { path: '', component: HomeComponent }
 ];
 
