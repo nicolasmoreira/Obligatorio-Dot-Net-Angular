@@ -1,21 +1,21 @@
 <div class="site-section bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="title-section text-center col-12">
-                    <h2 class="text-uppercase">Productos recién llegados</h2>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="title-section text-center col-12">
+                <h2 class="text-uppercase">Medicionas recién llegadas</h2>
             </div>
-            <div class="row">
-                <div class="col-md-12 block-3 products-wrap">
-                    <div class="nonloop-block-3 owl-carousel">
+        </div>
+        <div class="row">
+            <div class="col-md-12 block-3 products-wrap">
+                <div class="nonloop-block-3 owl-carousel">
 
-                        <div class="text-center item mb-4" *ngFor="let product of products;">
-                            <a href="shop-single.html"> <img src="{{product.image}}" alt="Image"></a>
-                            <h3 class="text-dark"><a href="shop-single.html">{{product.name}}</a></h3>
-                            <p class="price">${{product.price}}</p>
-                        </div>
+                    <div class="text-center item mb-4" *ngFor="let medicamento of medicamentos;">
+                        <a href="shop-single.html"> <img src="assets/images/product_0{{medicamento.Id}}.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="shop-single.html">{{ medicamento.Nombre | uppercase }}</a></h3>
+                        <p class="price">{{ medicamento.Precio | currency }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

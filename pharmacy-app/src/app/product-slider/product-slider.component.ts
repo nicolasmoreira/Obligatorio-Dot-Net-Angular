@@ -1,26 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment as ENV } from '../../environments/environment';
+import { Medicamento } from '../models/medicamento.model';
 
 @Component({
   selector: 'app-product-slider',
   templateUrl: './product-slider.component.html',
   styleUrls: ['./product-slider.component.scss']
 })
-export class ProductSliderComponent  {
+export class ProductSliderComponent implements OnInit {
+  public medicamentos: Medicamento[];
 
-  products: Product[] =[  
-    {image:'assets/images/product_01.png',name:'Bioderma',price:'95'},  
-    {image:'assets/images/product_02.png',name:'Chanca Piedra',price:'70'},  
-    {image:'assets/images/product_03.png',name:'Umcka Cold Care',price:'120'},  
-    {image:'assets/images/product_04.png',name:'Cetyl Pure',price:'45'},  
-    {image:'assets/images/product_05.png',name:'CLA Core',price:'38'},  
-    {image:'assets/images/product_06.png',name:'Poo Pourri',price:'89'},  
-]  
+  constructor(private http: HttpClient) {}
 
-
-}
-
-class Product {  
-  image : string;  
-  name : string;  
-  price : string;    
+  ngOnInit() {
+    this.http
+      .get<Medicamento[]>(ENV.api_dev_url + '/medicamentoes')
+      .subscribe((medicamentos: Medicamento[]) => {
+        this.medicamentos = medicamentos;
+      });
+  }
 }

@@ -12,4 +12,9 @@ export class HelpComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit() {
+    alert('Thanks for contacting us! We will get in touch with you shortly ...');
+    return false;
+  }
+
 }

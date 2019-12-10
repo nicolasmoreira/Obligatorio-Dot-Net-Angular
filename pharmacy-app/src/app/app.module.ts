@@ -12,6 +12,17 @@ import { HttpClientModule } from "@angular/common/http";
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";  
 import { DataService } from "./data.service";
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CartComponent } from './cart/cart.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { RegisterComponent } from './register/register.component';
+import { ListComponent } from './list/list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -21,13 +32,25 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     HelpComponent,
     FooterComponent,
     ProductSliderComponent,
+    CartComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    ListComponent,
     ProductDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     InMemoryWebApiModule.forRoot(DataService),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
