@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_dev_url: 'http://api-dev.meitre.test/api/'
+  api_dev_url: 'https://webapiobligatoriodotnet.azurewebsites.net/api/'
 };
 
 /*

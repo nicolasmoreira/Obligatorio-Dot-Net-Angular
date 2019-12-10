@@ -19,30 +19,20 @@
             <div class="main-nav d-none d-lg-block">
                 <nav class="site-navigation text-right text-md-center" role="navigation">
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
-                        <li class="active"><a routerLink="" routerLinkActive="active">Home</a></li>
-                        <li><a href="shop.html">REMEDIOS</a></li>
+                        <li><a routerLink="" routerLinkActive="active">Inicio</a></li>
                         <li class="has-children">
                             <a href="#">ARTÍCULOS</a>
                             <ul class="dropdown">
-                                <li><a href="#">Supplements</a></li>
-                                <li class="has-children">
-                                    <a href="#">Vitamins</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Supplements</a></li>
-                                        <li><a href="#">Vitamins</a></li>
-                                        <li><a href="#">Diet &amp; Nutrition</a></li>
-                                        <li><a href="#">Tea &amp; Coffee</a></li>
-                                    </ul>
+                                <li *ngFor="let c of categorias">
+                                    <a href="#">{{ c.Nombre }}</a>
                                 </li>
-                                <li><a href="#">Diet &amp; Nutrition</a></li>
-                                <li><a href="#">Tea &amp; Coffee</a></li>
-
                             </ul>
                         </li>
-                        <li><a *ngIf="!loginService.isAuthenticated" routerLink="/login" routerLinkActive="active">Login</a></li>
-                        <li><a *ngIf="!loginService.isAuthenticated" routerLink="/register" routerLinkActive="active">Register</a></li>
-                        <li><a *ngIf="loginService.isAuthenticated" (click)="loginService.logout()" routerLink="/" routerLinkActive="active">Logout</a></li>
-                        <li><a routerLink="/help" routerLinkActive="active">Help</a></li>
+                        <li><a href="shop.html">REMEDIOS</a></li>
+                        <li><a *ngIf="!loginService.isAuthenticated" routerLink="/login" routerLinkActive="active">Ingresar</a></li>
+                        <li><a *ngIf="!loginService.isAuthenticated" routerLink="/register" routerLinkActive="active">Registrarse</a></li>
+                        <li><a *ngIf="loginService.isAuthenticated" (click)="loginService.logout()" routerLink="/" routerLinkActive="active">Salir</a></li>
+                        <li><a routerLink="/help" routerLinkActive="active">Ayuda</a></li>
                     </ul>
                 </nav>
             </div>

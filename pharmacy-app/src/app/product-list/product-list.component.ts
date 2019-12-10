@@ -1,26 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment as ENV } from '../../environments/environment';
+import { NoMedicamento } from '../models/nomedicamento.model';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
+  public noMedicamentos: NoMedicamento[];
 
-    products: Product[] = [
-        {image: 'assets/images/product_01.png', name: 'Bioderma', price: '95'},
-        {image: 'assets/images/product_02.png', name: 'Chanca Piedra', price: '70'},
-        {image: 'assets/images/product_03.png', name: 'Umcka Cold Care', price: '120'},
-        {image: 'assets/images/product_04.png', name: 'Cetyl Pure', price: '45'},
-        {image: 'assets/images/product_05.png', name: 'CLA Core', price: '38'},
-        {image: 'assets/images/product_06.png', name: 'Poo Pourri', price: '89'},
-    ];
+  constructor(private http: HttpClient) {}
 
-
-}
-
-class Product {
-  image: string;
-  name: string;
-  price: string;
+  ngOnInit() {
+    this.http
+      .get<NoMedicamento[]>(ENV.api_dev_url + '/nomedicamentoes')
+      .subscribe((noMedicamentos: NoMedicamento[]) => {
+        this.noMedicamentos = noMedicamentos;
+      });
+  }
 }
