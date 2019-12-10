@@ -8,9 +8,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { HelpComponent } from './help/help.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductSliderComponent } from './product-slider/product-slider.component';
-import { HttpClientModule } from "@angular/common/http";
-import { InMemoryWebApiModule } from "angular-in-memory-web-api";  
-import { DataService } from "./data.service";
+import { HttpClientModule } from '@angular/common/http';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
@@ -42,7 +40,6 @@ export function tokenGetter() {
   imports: [
     BrowserModule,
     HttpClientModule,
-    InMemoryWebApiModule.forRoot(DataService),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

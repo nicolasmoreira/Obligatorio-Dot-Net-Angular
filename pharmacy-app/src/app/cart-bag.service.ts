@@ -15,9 +15,10 @@ export class CartBagService {
   }
 
   public addElement(element: any, quantity: number) {
-    this.elements.push([element, quantity]);
+    this.elements.push([element, {quantity: quantity}]);
     console.dir(this.elements);
     localStorage.setItem(CART_BAG_ELEMENTS_KEY, JSON.stringify(this.elements));
+    alert('Elemento agregado al carrito.');
   }
 
   public remove(id: number) {

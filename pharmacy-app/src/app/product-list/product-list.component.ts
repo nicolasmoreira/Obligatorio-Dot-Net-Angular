@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from "../product/prodcut.service";
-import { Product } from "../product/product";
 import { HttpClient } from '@angular/common/http';
 import { environment as ENV } from '../../environments/environment';
 import { NoMedicamento } from '../models/nomedicamento.model';
