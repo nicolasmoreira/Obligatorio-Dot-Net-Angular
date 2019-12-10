@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-sm-6 col-lg-4 text-center item mb-4" *ngFor="let noMedicamento of noMedicamentos;">
                 <a href="shop-single.html"> <img src="assets/images/product_0{{noMedicamento.Id}}.png" alt="Image"></a>
-                <h3 class="text-dark"><a href="shop-single.html">{{noMedicamento.Nombre}}</a></h3>
+                <h3 class="text-dark"><a href="shop-single.html">{{ noMedicamento.Nombre | uppercase }}</a></h3>
                 <p class="price">{{ noMedicamento.Precio | currency }}</p>
             </div>
         </div>
