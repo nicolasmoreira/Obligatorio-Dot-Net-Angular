@@ -22,7 +22,6 @@ export class LoginService {
   public isAuthenticated = false;
   public user: User = null;
 
-  // tslint:disable-next-line: max-line-length
   constructor(public http: HttpClient, private jwtHelper: JwtHelperService) {
 
   }

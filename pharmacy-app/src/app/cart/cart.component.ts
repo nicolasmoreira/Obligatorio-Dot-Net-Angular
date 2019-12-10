@@ -14,4 +14,8 @@ export class CartComponent implements OnInit {
 
   }
 
+  public cuponNotFound() {
+    alert('El cupón no es válido!.');
+  }
+
 }

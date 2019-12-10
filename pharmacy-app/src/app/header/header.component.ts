@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login/login.service';
+import { CartBagService } from '../cart-bag.service';
 import { environment as ENV } from '../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Categoria } from '../models/categoria.model';
@@ -12,7 +13,7 @@ import { Categoria } from '../models/categoria.model';
 export class HeaderComponent implements OnInit {
   public categorias: Categoria[];
 
-  constructor(public loginService: LoginService, private http: HttpClient) {}
+  constructor(public loginService: LoginService, public cartBagService: CartBagService, private http: HttpClient) {}
 
   ngOnInit() {
     this.loginService.checkAuthenticated();
