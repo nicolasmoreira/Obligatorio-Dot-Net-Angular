@@ -3,23 +3,33 @@
         <div class="row">
             <div class="col-md-12">
                 <h2 class="h3 mb-5 text-black">Ingresar</h2>
+                <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
             </div>
             <div class="col-md-12">
-                <form action="#" method="post">
-                    <div class="p-3 p-lg-5 border">
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <label for="username" class="text-black">Email <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="username" name="username">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="p-3 p-lg-5 border ">
+                        <div class="form-group row ">
+                            <div class="col-md-6 ">
+                                <label for="username">Email</label>
+                                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                    <span class="text-danger" *ngIf="f.username.hasError('required')">El Email es requerido.</span>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="password" class="text-black">Constraseña <span class="text-danger">*</span></label>
-                                <input type="password" class="form-control" id="password" name="password">
+                            <div class="col-md-6 ">
+                                <label for="password">Contraseña</label>
+                                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                    <span class="text-danger" *ngIf="f.password.hasError('required')">La contraseña es requerida.</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-lg-12">
-                                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Log In">
+                        <div class="form-group row ">
+                            <div class="col-lg-12 ">
+                                <button [disabled]="loading" class="btn btn-primary btn-lg btn-block ">
+                                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                    Ingresar
+                                </button>
                                 <a (click)="notImplemented()">Olvido su contraseña?</a>
                             </div>
                         </div>

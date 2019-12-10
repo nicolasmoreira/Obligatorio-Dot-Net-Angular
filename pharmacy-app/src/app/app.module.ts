@@ -15,6 +15,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { ListComponent } from './list/list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -38,6 +39,8 @@ export function tokenGetter() {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter

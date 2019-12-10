@@ -54,7 +54,7 @@ export class LoginService {
 
   public register(username: string, password: string, nombre: string, apellido: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.http.post(ENV.api_dev_url + '/auth/register', {
+      this.http.post(ENV.api_dev_url + '/api/register', {
         username,
         password,
         nombre,
@@ -71,19 +71,19 @@ export class LoginService {
 
   public login(username: string, password: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.http.post(ENV.api_dev_url + '/auth/login', {
-        username,
-        password
+      this.http.post(ENV.api_dev_url + 'login/auth', {
+        Username: username,
+        Password: password
       }).toPromise().then((response: any) => {
         console.dir(response);
-        localStorage.setItem(JWT_ACCESS_TOKEN_NAME, response.token);
+        localStorage.setItem(JWT_ACCESS_TOKEN_NAME, response);
         this.isAuthenticated = true;
         resolve(true);
       })
       .catch((reason: any) => {
         console.dir(reason);
         this.isAuthenticated = false;
-        resolve(reason);
+        reject(false);
       });
     });
   }
