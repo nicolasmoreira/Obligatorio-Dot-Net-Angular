@@ -8,11 +8,14 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { HelpComponent } from './help/help.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductSliderComponent } from './product-slider/product-slider.component';
+import { HttpClientModule } from "@angular/common/http";
+import { InMemoryWebApiModule } from "angular-in-memory-web-api";  
+import { DataService } from "./data.service";
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
-import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { ListComponent } from './list/list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -33,12 +36,14 @@ export function tokenGetter() {
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    ListComponent
+    ListComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
+    InMemoryWebApiModule.forRoot(DataService),
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     JwtModule.forRoot({
