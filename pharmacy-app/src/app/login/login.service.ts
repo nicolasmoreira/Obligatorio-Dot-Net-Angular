@@ -8,9 +8,7 @@ const JWT_ACCESS_TOKEN_NAME = 'access_token';
 export function jwtOptionsFactory(storage) {
   return {
     tokenGetter: () => {
-      // return storage.get(JWT_ACCESS_TOKEN_NAME);
-      // tslint:disable-next-line: max-line-length
-      return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1MjYyMjEwNTYsImV4cCI6MTU1Nzg0MzQ1Niwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoibm1vcmUyMSJ9.X2xY3Wi8b7s6pVP4DM-EMUMTeYrOoVq4jAFFXVDwUf9knHSYyLbZQIEXbfRUOlYHiYqtASnBBQD3PbwlDsfYTRwI5CpIkqSTxKUbSfFSySKpmQIUcqKGdiVtZs8GwX1aut0h9opIGWRD5JFcRk_1b7KdCWvqyK7VTmGgwxVE_tXU08HG5xMqUqZfeAg6CcgXEqBF8BKbpsrs7ZZAifOBh542c0wIu5wBxmUSOwAutoqkl8gn8mF20Btm9daM33Fg4F4KB4nnwQOR1MfdEO1iew3g5PNjnvynx_6OYr46IKRkWb5znKLMQmelzgj-BsUj2hlQwmH9TbV0jN1SoxFnsoQ6eBkwsMlCsgoB8Shym80yLKyURwJAHpwSOo2D5qR95oVTYnbXgsCO_YW0TxBhTZwfqp1Rlkj2HTTWB_Sn5Q29DByb3TTZ0OUC-u9Cw7Uc_IC8TqurKI_FzCcdt3MpHEa0nvByl79bCFR7_kftWspCrdGq7VqVkD1RjgMnL1a7iPUT4kB7WICvV8VXnqTr-28XQMDWrX-cBWbYmQUZwGDmqyPSLNJeZU2x9ZdWeYGzKR3-2EqDOToMzbCWPsLZ4_idORKjl8-mTpYtKkvzFXYR9hjfQsf5eZUWRyWKBh4Sj8r2dAZgjL_AZOwrrMB53PZF_y9FgyWO3Ft7zl8WlsA';
+      return storage.get(JWT_ACCESS_TOKEN_NAME);
     },
     whitelistedDomains: []
   };
