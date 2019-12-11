@@ -28,7 +28,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="shop.html">REMEDIOS</a></li>
+                        <li><a routerLink="/list-drugs" routerLinkActive="active">REMEDIOS</a></li>
                         <li *ngIf="!loginService.isAuthenticated"><a routerLink="/login" routerLinkActive="active">Ingresar</a></li>
                         <li *ngIf="!loginService.isAuthenticated"><a routerLink="/register" routerLinkActive="active">Registrarse</a></li>
                         <li *ngIf="loginService.isAuthenticated"><a (click)="loginService.logout()" routerLink="/" routerLinkActive="active">Salir</a></li>

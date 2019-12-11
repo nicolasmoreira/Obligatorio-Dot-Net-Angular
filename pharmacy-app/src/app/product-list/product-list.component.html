@@ -7,14 +7,14 @@
         </div>
         <div class="row">
             <div class="col-sm-6 col-lg-4 text-center item mb-4" *ngFor="let noMedicamento of noMedicamentos;">
-                <a routerLink="/product-details/{{ noMedicamento.Id }}"> <img src="assets/images/product_0{{noMedicamento.Id}}.png" alt="Image"></a>
+                <a routerLink="/product-details/{{ noMedicamento.Id }}" routerLinkActive="active"> <img src="assets/images/product_0{{noMedicamento.Id}}.png" alt="Image"></a>
                 <h3 class="text-dark"><a routerLink="/product-details/{{ noMedicamento.Id }}" routerLinkActive="active">{{ noMedicamento.Nombre | uppercase }}</a></h3>
                 <p class="price">{{ noMedicamento.Precio | currency }}</p>
             </div>
         </div>
         <div class="row mt-5">
             <div class="col-12 text-center">
-                <a routerLink="/list/-1" class="btn btn-primary px-4 py-3">Ver todos los Artículos</a>
+                <a routerLink="/list/0" class="btn btn-primary px-4 py-3">Ver todos los Artículos</a>
             </div>
         </div>
     </div>

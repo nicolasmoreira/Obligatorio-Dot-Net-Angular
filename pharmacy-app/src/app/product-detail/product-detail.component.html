@@ -11,7 +11,7 @@
                 <p>{{ element?.Descripcion }}</p>
                 <p><del>{{ element?.Precio + (element?.Precio * 10) / 100 | number:'1.0-0' }}.00</del> - <strong class="text-primary h4">{{ element?.Precio | currency }}</strong></p>
 
-                <p><a (click)="cartBagService.addElement(element, 1)" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Agregar al Carrito</a></p>
+                <p><a (click)="cartBagService.addElement(element)" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Agregar al Carrito</a></p>
 
                 <div *ngIf="element?.Composicion" class="mt-5">
                     <ul class="nav nav-pills mb-3 custom-pill" id="pills-tab" role="tablist">
@@ -22,9 +22,6 @@
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <table class="table custom-table">
-                                <thead>
-                                    <th>Datos</th>
-                                </thead>
                                 <tbody>
                                     <tr>
                                         <th scope="row">Composición</th>

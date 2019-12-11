@@ -26,9 +26,11 @@ export class ListComponent implements OnInit {
       this.http
         .get<NoMedicamento[]>(ENV.api_dev_url + '/nomedicamentoes')
         .subscribe((noMedicamentos: NoMedicamento[]) => {
-          noMedicamentos = noMedicamentos.filter(
-            q => q.CategoriaId === this.idCategoria
-          );
+          if (this.idCategoria !== 0) {
+            noMedicamentos = noMedicamentos.filter(
+              q => q.CategoriaId === this.idCategoria
+            );
+          }
           this.noMedicamentos = noMedicamentos;
         });
     });

@@ -51,17 +51,18 @@ export class LoginService {
 
   public register(username: string, password: string, nombre: string, apellido: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.http.post(ENV.api_dev_url + '/api/register', {
-        username,
-        password,
-        nombre,
-        apellido
+      this.http.post(ENV.api_dev_url + 'usuarios', {
+        Email: username,
+        Password: password,
+        Nombre: nombre,
+        Apellido: apellido,
+        Roles: 'Usuario'
       }).toPromise().then((response: any) => {
         console.dir(response);
         resolve(true);
       })
       .catch((reason: any) => {
-        resolve(reason);
+        resolve(false);
       });
     });
   }
@@ -69,7 +70,7 @@ export class LoginService {
   public login(username: string, password: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.http.post(ENV.api_dev_url + 'login/auth', {
-        Username: username,
+        Email: username,
         Password: password
       }).toPromise().then((response: any) => {
         console.dir(response);

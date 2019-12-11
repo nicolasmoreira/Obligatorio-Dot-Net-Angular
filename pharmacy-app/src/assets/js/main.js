@@ -38,7 +38,7 @@
 
      setTimeout(function() {
          slider();
-     }, 2000);
+     }, 500);
 
 
      var siteMenuClone = function() {

@@ -7,14 +7,18 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { HelpComponent } from './help/help.component';
 import { ListComponent } from './list/list.component';
+import { ListDrugsComponent } from './list-drugs/list-drugs.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'cart', component: CartComponent },
   { path: 'help', component: HelpComponent },
   { path: 'list/:idCategoria', component: ListComponent },
-  { path: '', component: HomeComponent },
+  { path: 'list-drugs', component: ListDrugsComponent },
+  { path: 'checkout', component: CheckoutComponent },
   { path: 'product-details/:idElement', component: ProductDetailComponent }
 ];
 

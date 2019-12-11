@@ -51,14 +51,14 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <label class="text-black h4" for="coupon">Coupón</label>
+                    <label class="text-black h4" for="coupon">Cupón</label>
                     <p>Ingrese su código de cupón si tiene uno.</p>
                 </div>
                 <div class="col-md-8 mb-3 mb-md-0">
-                    <input required type="text" class="form-control py-3" id="coupon" placeholder="Código de cupón">
+                    <input required type="text" class="form-control py-3" id="coupon" placeholder="Código de Cupón" aria-label="Código de Cupón">
                 </div>
                 <div class="col-md-4">
-                    <button (click)="cuponNotFound()" class="btn btn-primary btn-md px-4">Aplicar Coupón</button>
+                    <button (click)="cuponNotFound()" class="btn btn-primary btn-md px-4">Aplicar Cupón</button>
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <button class="btn btn-primary btn-lg btn-block" onclick="window.location='checkout.html'">Proceder a comprar</button>
+                            <button class="btn btn-primary btn-lg btn-block" [routerLink]="['/checkout']">Proceder a comprar</button>
                         </div>
                     </div>
                 </div>

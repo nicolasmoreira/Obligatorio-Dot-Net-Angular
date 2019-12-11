@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 const CART_BAG_ELEMENTS_KEY = 'cart_bag_elements';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {environment as ENV} from '../environments/environment';
 const IVA = 22;
 
 @Injectable({
@@ -8,16 +10,27 @@ const IVA = 22;
 export class CartBagService {
   public elements: Array<any> = [];
 
-  constructor() {
+  constructor(public http: HttpClient) {
     if (localStorage.getItem(CART_BAG_ELEMENTS_KEY)) {
       this.elements = JSON.parse(localStorage.getItem(CART_BAG_ELEMENTS_KEY));
     }
   }
 
-  public addElement(element: any, quantity: number) {
-    this.elements.push([element, {quantity: quantity}]);
-    console.dir(this.elements);
+  public addElement(element: any) {
+    let alreadyAded = false;
+    this.elements.map(value => {
+      if (value[0].Id === element.Id) {
+        value[1].quantity++;
+        alreadyAded = true;
+      }
+    });
+
+    if (!alreadyAded) {
+      this.elements.push([element, {quantity: 1}]);
+    }
+
     localStorage.setItem(CART_BAG_ELEMENTS_KEY, JSON.stringify(this.elements));
+    console.dir(this.elements);
     alert('Elemento agregado al carrito.');
   }
 
@@ -67,6 +80,38 @@ export class CartBagService {
     });
 
     return total;
+  }
+
+  public doPayment(tarjetaId: number, canitidadRecetasBlancas: number, cantidadRecetasControladas: number, direccion: string) {
+    const lineas = [];
+
+    this.elements.forEach(element => {
+      lineas.push({Cantidad: element[1].quantity, Monto: 0, Articulo_Id: element[0].Id});
+    });
+
+    const factura = {
+      UsuarioId: 2,
+      TarjetaId: tarjetaId,
+      CanitidadRecetasBlancas: canitidadRecetasBlancas,
+      CantidadRecetasControladas: cantidadRecetasControladas,
+      Delivery: {
+        Direccion: direccion,
+      },
+      Lineas: lineas
+    };
+
+    return new Promise((resolve, reject) => {
+      this.http.post(ENV.api_dev_url + 'facturas', factura)
+      .toPromise().then((response: any) => {
+        console.dir(response);
+        resolve(true);
+      })
+      .catch((reason: any) => {
+        console.dir(reason);
+        reject(false);
+      });
+    });
+
   }
 
 }

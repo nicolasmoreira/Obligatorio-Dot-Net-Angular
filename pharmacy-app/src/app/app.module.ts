@@ -17,6 +17,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { RegisterComponent } from './register/register.component';
 import { ListComponent } from './list/list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListDrugsComponent } from './list-drugs/list-drugs.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -35,7 +37,9 @@ export function tokenGetter() {
     LoginComponent,
     RegisterComponent,
     ListComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ListDrugsComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
