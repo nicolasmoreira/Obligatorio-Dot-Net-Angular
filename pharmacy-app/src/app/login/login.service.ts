@@ -3,7 +3,10 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 import {User} from '../models/user.model';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment as ENV} from '../../environments/environment';
+import { prepareSyntheticListenerFunctionName } from '@angular/compiler/src/render3/util';
 const JWT_ACCESS_TOKEN_NAME = 'access_token';
+const USER_ID_NAME = 'user_id';
+
 
 export function jwtOptionsFactory(storage) {
   return {
@@ -20,7 +23,7 @@ export function jwtOptionsFactory(storage) {
 export class LoginService {
 
   public isAuthenticated = false;
-  public user: User = null;
+  public userId: number = null;
 
   constructor(public http: HttpClient, private jwtHelper: JwtHelperService) {
 
@@ -29,15 +32,16 @@ export class LoginService {
   public checkAuthenticated(): Promise<boolean> {
 
     return new Promise((resolve, reject) => {
-      // resolve(true);
       const token = localStorage.getItem(JWT_ACCESS_TOKEN_NAME);
-      if (token) {
+      const userId = localStorage.getItem(USER_ID_NAME);
+      if (token && userId) {
         if (this.jwtHelper.isTokenExpired(token)) {
           localStorage.removeItem(JWT_ACCESS_TOKEN_NAME);
           this.isAuthenticated = false;
           console.log('isTokenExpired');
           resolve(false);
         } else {
+          this.userId = parseInt(userId, 10);
           this.isAuthenticated = true;
           console.log('token ok');
           resolve(true);
@@ -74,7 +78,12 @@ export class LoginService {
         Password: password
       }).toPromise().then((response: any) => {
         console.dir(response);
-        localStorage.setItem(JWT_ACCESS_TOKEN_NAME, response);
+
+        const parsed = JSON.parse(response);
+
+        localStorage.setItem(JWT_ACCESS_TOKEN_NAME, parsed.JWT);
+        localStorage.setItem(USER_ID_NAME, parsed.Id);
+        this.userId = parseInt(parsed.Id, 10);
         this.isAuthenticated = true;
         resolve(true);
       })
@@ -88,7 +97,7 @@ export class LoginService {
 
   public logout() {
     this.isAuthenticated = false;
-
-    return localStorage.removeItem(JWT_ACCESS_TOKEN_NAME);
+    localStorage.removeItem(JWT_ACCESS_TOKEN_NAME);
+    localStorage.removeItem(USER_ID_NAME);
   }
 }

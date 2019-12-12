@@ -53,6 +53,7 @@ export class CheckoutComponent implements OnInit {
     this.loading = true;
     this.cartBagService
       .doPayment(
+        this.loginService.userId,
         this.f.tarjetaId.value,
         this.f.canitidadRecetasBlancas.value,
         this.f.cantidadRecetasControladas.value,
@@ -63,6 +64,7 @@ export class CheckoutComponent implements OnInit {
           'Gracias por su compra!. La misma está siendo procesada y será entregada en las próximas 3h.'
         );
         this.loading = false;
+        this.router.navigate(['/']);
       })
       .catch(err => {
         alert(

@@ -82,7 +82,8 @@ export class CartBagService {
     return total;
   }
 
-  public doPayment(tarjetaId: number, canitidadRecetasBlancas: number, cantidadRecetasControladas: number, direccion: string) {
+  public doPayment(userId: number, tarjetaId: number, canitidadRecetasBlancas: number,
+                   cantidadRecetasControladas: number, direccion: string) {
     const lineas = [];
 
     this.elements.forEach(element => {
@@ -90,7 +91,7 @@ export class CartBagService {
     });
 
     const factura = {
-      UsuarioId: 2,
+      UsuarioId: userId,
       TarjetaId: tarjetaId,
       CanitidadRecetasBlancas: canitidadRecetasBlancas,
       CantidadRecetasControladas: cantidadRecetasControladas,
@@ -105,6 +106,8 @@ export class CartBagService {
       .toPromise().then((response: any) => {
         console.dir(response);
         resolve(true);
+        this.elements = [];
+        localStorage.removeItem(CART_BAG_ELEMENTS_KEY);
       })
       .catch((reason: any) => {
         console.dir(reason);
