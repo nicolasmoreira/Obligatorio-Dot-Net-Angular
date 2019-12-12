@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col-sm-6 col-lg-4 text-center item mb-4" *ngFor="let noMedicamento of noMedicamentos;">
-                <a routerLink="/product-details/{{ noMedicamento.Id }}" routerLinkActive="active"> <img src="assets/images/product_0{{noMedicamento.Id}}.png" alt="Image"></a>
+                <a routerLink="/product-details/{{ noMedicamento.Id }}" routerLinkActive="active"> <img style="max-width: 300px; max-height: 320px;" src="assets/images/product_{{noMedicamento.Id}}.jpg" alt="Image"></a>
                 <h3 class="text-dark"><a routerLink="/product-details/{{ noMedicamento.Id }}" routerLinkActive="active">{{ noMedicamento.Nombre | uppercase }}</a></h3>
                 <p class="price">{{ noMedicamento.Precio | currency }}</p>
             </div>
